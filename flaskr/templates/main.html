@@ -8,9 +8,9 @@
     <title>Karkkilan seurakunnan viikon tapahtumakalenteri</title>
 
     <!-- Bootstrap -->
-    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='main.css') }}">
-    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
-    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='vendors/flipClock/flipclock.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='vendors/flipClock/flipclock.css') }}">
   </head>
   <body>
     <div class="container-fluid">
@@ -18,23 +18,34 @@
         <div class="col-md-3 logo"><img src="{{ url_for('static', filename='img/logo.svg') }}"/></div>
         <div class="col-md-offset-1 col-md-4 clock"></div>
         <div id="calendar" class=" col-md-4"></div>
-        <div class="col-md-offset-1 col-md-4 clock"></div>
-        <div id="calendar" class=" col-md-4"></div>
     	</header>
-      <div id="eventsHidden"></div>
-      {% for item in output %}
+
         <div id="eventTiles" class="events row row-centered">
-          <p>{{ item[0] }} - {{ item[2] }} <br> {{ item[1] }}</p>
+        {% for item in output %}
+          <div class="singleEvent media col-md-3 col-centered">
+            <div class="media-left media-middle">
+            {% set image = 'img/' + item[0].replace('ö', 'o').replace('ä', 'a').lower() + '.png' %}
+              <img class="media-object img-circle" src="{{ url_for('static', filename=image) }}" alt="">
+            </div>
+            <div class="media-body media-right">
+              <h1 class="media-heading">{{ item[0] }}</h1>
+              <p class="timeDate">
+                <span class="eventDate">{{ item[2] }}</span>
+                <span class="eventTime"> Kello: {{ item[3] }}</span>
+              </p>
+              <p class="eventDescription moreText">Kuvaus:
+                <span class="truncate">{{ item[1] }}</span>
+              </p>
+              <p class="eventLocation">Paikka: ?</p>
+            </div>
+          </div>
+        {% endfor %}
         </div>
-      {% endfor %}
-      <footer>
-    		<p>Copyright &copy;<span class="year"></span> Karkkilan Seurakunta</p>
-    	</footer>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{url_for('static', filename='js/calendar.js')}}"></script>
-    <script src="{{url_for('static', filename='vendors/flipClock/flipclock.min.js')}}"></script>    
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>  
+    <script src="{{url_for('static', filename='vendors/flipClock/flipclock.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
   </body>
 </html>
