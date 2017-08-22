@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="21600"> <!--6 hours = 21600-->
+    <title>Karkkilan seurakunnan viikon tapahtumakalenteri</title>
+
+    <!-- Bootstrap -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <header class="row">
+        <div class="col-md-3 logo"><img src="{{ url_for('static', filename='img/logo.svg') }}"/></div>
+        <div class="col-md-offset-1 col-md-4 clock"></div>
+        <div id="calendar" class=" col-md-4"></div>
+    	</header>
+      <div id="eventsHidden"></div>
+      {% for item in output %}
+        <div id="eventTiles" class="events row row-centered">
+          <p>{{ item[0] }} - {{ item[2] }} <br> {{ item[1] }}</p>
+        </div>
+      {% endfor %}
+      <footer>
+    		<p>Copyright &copy;<span class="year"></span> Karkkilan Seurakunta</p>
+    	</footer>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </body>
+</html>
