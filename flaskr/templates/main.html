@@ -8,15 +8,16 @@
     <title>Karkkilan seurakunnan viikon tapahtumakalenteri</title>
 
     <!-- Bootstrap -->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
-
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='main.css') }}">
+    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+    <link rel=stylesheet type=text/css        href="{{ url_for('static', filename='vendors/flipClock/flipclock.css') }}">
   </head>
   <body>
     <div class="container-fluid">
       <header class="row">
         <div class="col-md-3 logo"><img src="{{ url_for('static', filename='img/logo.svg') }}"/></div>
+        <div class="col-md-offset-1 col-md-4 clock"></div>
+        <div id="calendar" class=" col-md-4"></div>
         <div class="col-md-offset-1 col-md-4 clock"></div>
         <div id="calendar" class=" col-md-4"></div>
     	</header>
@@ -32,5 +33,8 @@
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/calendar.js')}}"></script>
+    <script src="{{url_for('static', filename='vendors/flipClock/flipclock.min.js')}}"></script>    
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>  
   </body>
 </html>
