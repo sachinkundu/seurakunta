@@ -28,11 +28,9 @@ def get_feed():
 
 def refresh_feed():
     with app.app_context():
-        print('Refresh feed...')
         g._feed = feedparser.parse('http://www.karkkilanseurakunta.fi/events-portlet/feed/parish')
 
 with app.app_context():
-    print(current_app.name)
     scheduler.add_job(refresh_feed, 'interval', days=1)
     scheduler.start()
 
