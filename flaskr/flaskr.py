@@ -16,7 +16,8 @@ def humanize_date(date):
 
 def get_time(date):
     t = arrow.get(date)
-    return t.format('HH:mm')
+    localdt = t.to('Europe/Helsinki')
+    return localdt.format('HH:mm')
 
 app = Flask(__name__)
 scheduler = BackgroundScheduler()
