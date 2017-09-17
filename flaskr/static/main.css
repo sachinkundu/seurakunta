@@ -84,6 +84,8 @@ footer{
   max-height: 200px;
   overflow: hidden;
   float: none !important;
+  padding: 0;
+  padding: 15px;
 }
 .row-centered{
   text-align:center;
@@ -142,6 +144,8 @@ h1.media-heading{
 }
 .img-circle{
   border: gray 2px solid;
+  margin: 0 auto;
+  margin-top: -15px;
 }
 
 /* Calendar */
@@ -195,6 +199,7 @@ table.calendar {
   animation-play-state: running;
 }
 .singleEvent.grow{
+  padding: 10% !important;
   display: block;
   margin: auto !important;
   text-align: center;
